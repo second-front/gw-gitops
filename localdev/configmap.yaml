@@ -1,0 +1,84 @@
+flux:
+  interval: 2m
+  rollback:
+    cleanupOnFail: false
+
+kiali:
+  enabled: false
+
+istio:
+  sourceType: helmrepo
+  enabled: true
+
+istioOperator:
+  sourceType: helmrepo
+  enabled: true
+
+monitoring:
+  sourceType: helmrepo
+  enabled: true
+  values:
+    prometheus:
+      prometheusSpec:
+        resources:
+          requests:
+            cpu: 200m
+            memory: 1Gi
+
+loki:
+  sourceType: helmrepo
+  enabled: true
+  strategy: scalable
+  values:
+    minio:
+      enabled: true
+    write:
+      replicas: 1
+      persistence:
+        size: 2Gi
+      resources:
+        limits:
+          cpu: 200m
+          memory: 400Mi
+        requests:
+          cpu: 200m
+          memory: 400Mi
+    read:
+      replicas: 1
+      persistence:
+        size: 2Gi
+      resources:
+        limits:
+          cpu: 200m
+          memory: 400Mi
+        requests:
+          cpu: 200m
+          memory: 400Mi
+
+promtail:
+  sourceType: helmrepo
+  enabled: true
+
+kyverno:
+  sourceType: helmrepo
+  enabled: true
+
+kyvernoPolicies:
+  sourceType: helmrepo
+  enabled: true
+
+neuvector:
+  sourceType: helmrepo
+  enabled: true
+  values:
+    k3s:
+      enabled: true
+
+addons:
+  metricsServer:
+    sourceType: helmrepo
+    enabled: auto
+
+  minioOperator:
+    sourceType: helmrepo
+    enabled: true

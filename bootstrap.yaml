@@ -1,0 +1,35 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bigbang
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: environment-repo
+  namespace: bigbang
+spec:
+  interval: 1m
+  url: https://code.il2.gamewarden.io/gamewarden/2fx/big-bang-generated-template
+  ref:
+    branch: main
+  secretRef:
+    name: private-git
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: environment
+  namespace: bigbang
+spec:
+  interval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: environment-repo
+  path: ./localdev
+  prune: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
