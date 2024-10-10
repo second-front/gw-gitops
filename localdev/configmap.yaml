@@ -144,7 +144,7 @@ addons:
                 targetRevision: 1.0.10
               - ref: values
                 repoURL: https://github.com/second-front/gw-gitops
-                targetRevision: main
+                targetRevision: stephen
             syncPolicy:
               automated:
                 prune: true
