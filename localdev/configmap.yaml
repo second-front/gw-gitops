@@ -3,19 +3,22 @@ flux:
   rollback:
     cleanupOnFail: false
 
+networkPolicies:
+  enabled: false
+
 kiali:
   enabled: false
 
 istio:
-  sourceType: helmrepo
+  sourceType: helmRepo
   enabled: true
 
 istioOperator:
-  sourceType: helmrepo
+  sourceType: helmRepo
   enabled: true
 
 monitoring:
-  sourceType: helmrepo
+  sourceType: helmRepo
   enabled: true
   values:
     prometheus:
@@ -26,7 +29,7 @@ monitoring:
             memory: 1Gi
 
 loki:
-  sourceType: helmrepo
+  sourceType: helmRepo
   enabled: true
   strategy: scalable
   values:
@@ -54,31 +57,112 @@ loki:
         requests:
           cpu: 200m
           memory: 400Mi
-
+    extraobjects:
+    - apiVersion: "security.istio.io/v1beta1"
+      kind: PeerAuthentication
+      metadata:
+        name: loki-minio-endpoint-exception
+        namespace: logging
+      spec:
+        mtls:
+          mode: STRICT
+        selector: 
+          matchLabels:
+            app: minio
+        portLevelMtls:
+          "9000":
+            mode: PERMISSIVE
 promtail:
-  sourceType: helmrepo
+  sourceType: helmRepo
   enabled: true
 
 kyverno:
-  sourceType: helmrepo
+  sourceType: helmRepo
   enabled: true
 
 kyvernoPolicies:
-  sourceType: helmrepo
+  sourceType: helmRepo
   enabled: true
+  values:
+    restrict-volume-types:
+      validationFailureAction: Audit
+    restrict-image-registries:
+      validationFailureAction: Audit
 
 neuvector:
-  sourceType: helmrepo
-  enabled: true
+  sourceType: helmRepo
+  enabled: false
   values:
     k3s:
       enabled: true
 
 addons:
+  argocd:
+    enabled: true
+    values:
+      server:
+        extraArgs:
+        - --insecure
+        - --repo-server-plaintext
+      repoServer:
+        extraArgs:
+        - --disable-tls
+      controller:
+        extraArgs:
+        - --repo-server-plaintext
+      redis-bb:
+        values: 
+          networkPolicies:
+            enabled: true
+        networkPolicies:
+          enabled: true
+      argocd-apps:
+        applications:
+          - destination:
+              namespace: APP
+              server: https://kubernetes.default.svc
+            ignoreDifferences:
+              - jsonPointers:
+                  - /data
+                  - /stringData
+                kind: Secret
+                name: generated-secrets
+                namespace: APP
+            info:
+              - name: url
+                value: https://github.com/second-front/uchart
+            name: APP-ENV
+            namespace: argocd
+            project: APP-ENV
+            sources:
+              - helm:
+                  valueFiles:
+                    - $values/app/base.yaml
+                    - $values/app/ENV.yaml
+                path: ./
+                repoURL: https://github.com/second-front/uchart.git
+                targetRevision: 1.0.10
+              - ref: values
+                repoURL: https://github.com/second-front/gw-gitops
+                targetRevision: main
+            syncPolicy:
+              automated:
+                prune: true
+                selfHeal: true
+              managedNamespaceMetadata:
+                labels:
+                  istio-injection: enabled
+              syncOptions:
+                - CreateNamespace=true
+                - Validate=false
+                - RespectIgnoreDifferences=true
   metricsServer:
-    sourceType: helmrepo
+    sourceType: helmRepo
     enabled: auto
+    values:
+      args:
+      - --kubelet-insecure-tls
 
   minioOperator:
-    sourceType: helmrepo
+    sourceType: helmRepo
     enabled: true

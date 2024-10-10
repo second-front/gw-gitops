@@ -11,11 +11,9 @@ metadata:
   namespace: bigbang
 spec:
   interval: 1m
-  url: https://code.il2.gamewarden.io/gamewarden/2fx/big-bang-generated-template
+  url: https://github.com/second-front/gw-gitops
   ref:
-    branch: main
-  secretRef:
-    name: private-git
+    branch: stephen
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -32,4 +30,4 @@ spec:
   decryption:
     provider: sops
     secretRef:
-      name: sops-gpg
+      name: sops-age
