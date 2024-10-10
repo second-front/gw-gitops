@@ -1,0 +1,4 @@
+microservices:
+  hackathon:
+    image:
+      tag: test

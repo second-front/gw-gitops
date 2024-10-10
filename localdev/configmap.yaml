@@ -138,7 +138,7 @@ addons:
               - helm:
                   valueFiles:
                     - $values/app/base.yaml
-                    - $values/app/ENV.yaml
+                    - $values/app/dev.yaml
                 path: ./
                 repoURL: https://github.com/second-front/uchart.git
                 targetRevision: 1.0.10
