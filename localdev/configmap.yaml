@@ -84,6 +84,14 @@ kyvernoPolicies:
   sourceType: helmRepo
   enabled: true
   values:
+    exclude:
+      #Do not want to block anything in kube-system
+      any:
+      - resources:
+          namespaces:
+          - kube-system
+          - local-path-storage
+
     policies:
       restrict-volume-types:
         validationFailureAction: Audit
