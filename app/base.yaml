@@ -13,7 +13,7 @@ microservices:
       runAsUser: 65532
       runAsGroup: 65532
     image:
-      tag: "0.0"
+      tag: "1.1"
 
 manifests:
   vs:
