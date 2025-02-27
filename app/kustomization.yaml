@@ -1,0 +1,13 @@
+resources:
+- ks.yaml
+
+configMapGenerator:
+  - name: santonio-base-values
+    files:
+      - values.yaml=base.yaml
+  - name: santonio-env-values
+    files:
+      - values.yaml=ENV.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
