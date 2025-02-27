@@ -193,6 +193,9 @@ addons:
       client_secret: "123456789a"
       enabled: true
     values:
+      istio:
+        mtls:
+          mode: PERMISSIVE
       server:
         extraArgs:
         - --insecure
