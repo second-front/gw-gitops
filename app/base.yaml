@@ -20,7 +20,7 @@ manifests:
     apiVersion: networking.istio.io/v1
     kind: VirtualService
     metadata:
-      name: hackathon
+      name: santonio
     spec:
       gateways:
       - istio-system/public
@@ -32,3 +32,25 @@ manifests:
             host: santonio
             port:
               number: 8080
+  twobrief:
+    apiVersion: networking.istio.io/v1
+    kind: VirtualService
+    metadata:
+      labels:
+        app: santoniopub
+      name: santoniopub
+    spec:
+      gateways:
+        - istio-system/public-afwerx
+      hosts:
+        - "santonio.gamewarden.io"
+      http:
+        - match:
+            - uri:
+                prefix: /
+          route:
+            - destination:
+                host: santonio
+                port:
+                  number: 8080
+
