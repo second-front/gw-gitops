@@ -23,6 +23,10 @@ microservices:
     volumeMounts:
       - name: nginx-cache
         mountPath: /var/cache/nginx
+    volumes:
+      - name: nginx-cache
+        emptyDir:
+          medium: Memory 
     image:
       tag: "1.0"
 
