@@ -806,7 +806,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "123456789",
+      "secret": "123456789a",
       "redirectUris": [
         "https://*"
       ],
