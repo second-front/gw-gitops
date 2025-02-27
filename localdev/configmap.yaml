@@ -92,6 +92,7 @@ kyvernoPolicies:
           - kube-system
           - local-path-storage
           - argocd
+          - app
 
     policies:
       restrict-volume-types:
