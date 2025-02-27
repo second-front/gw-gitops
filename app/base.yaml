@@ -7,6 +7,8 @@ microservices:
   santonio:
     securityContext:
       readOnlyRootFilesystem: false
+      runAsUser: 101
+      runAsGroup: 101
     image:
       tag: "1.0"
 
