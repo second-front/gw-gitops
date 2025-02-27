@@ -91,6 +91,7 @@ kyvernoPolicies:
           namespaces:
           - kube-system
           - local-path-storage
+          - argocd
 
     policies:
       restrict-volume-types:
