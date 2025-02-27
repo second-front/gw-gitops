@@ -8,6 +8,8 @@ microservices:
     pullPolicy: Always
     # selectorLabels:
     #   protect: keycloak
+    service:
+      port: 8080
     securityContext:
       readOnlyRootFilesystem: false
       runAsUser: 65532
