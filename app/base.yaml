@@ -32,7 +32,7 @@ manifests:
             host: santonio
             port:
               number: 8080
-  twobrief:
+  toobrief:
     apiVersion: networking.istio.io/v1
     kind: VirtualService
     metadata:
