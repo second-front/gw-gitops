@@ -5,10 +5,19 @@ global:
 
 microservices:
   santonio:
+    initContainers:
+    - name: fix-permissions
+      image: 'r.gamewarden.io/base/santonio:1.0'
+      command: ["sh", "-c", "chown -R 101:101 /var/cache/nginx"]
+      securityContext:
+        runAsUser: 0  # Run as root to fix permissions
+      volumeMounts:
+        - name: nginx-cache
+          mountPath: /var/cache/nginx
     securityContext:
       readOnlyRootFilesystem: false
-      # runAsUser: 101
-      # runAsGroup: 101
+      runAsUser: 101
+      runAsGroup: 101
       allowPrivilegeEscalation: true
       runAsNonRoot: false
     image:
