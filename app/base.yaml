@@ -1,0 +1,9 @@
+global:
+  image: 
+    defaultImageRegistry: r.gamewarden.io
+    defaultImageRepository: base
+
+microservices:
+  santonio:
+    image:
+      tag: 1.0
