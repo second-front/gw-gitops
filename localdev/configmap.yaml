@@ -216,7 +216,7 @@ addons:
                   - /stringData
                 kind: Secret
                 name: generated-secrets
-                namespace: APP
+                namespace: app
             info:
               - name: url
                 value: https://github.com/second-front/uchart
