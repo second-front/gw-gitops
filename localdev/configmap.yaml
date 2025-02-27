@@ -179,7 +179,7 @@ addons:
     enabled: true
     chains:
       app:
-        callback_uri: https://app.gw.local
+        callback_uri: https://app.gw.local/oauth/callback
         client_id: il2_eb21db65-3118-4017-bfe7-86829038d3dc_apps
         client_secret: "123456789"
         match:
