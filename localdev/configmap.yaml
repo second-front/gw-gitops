@@ -208,7 +208,7 @@ addons:
       argocd-apps:
         applications:
           - destination:
-              namespace: APP
+              namespace: app
               server: https://kubernetes.default.svc
             ignoreDifferences:
               - jsonPointers:
@@ -220,7 +220,7 @@ addons:
             info:
               - name: url
                 value: https://github.com/second-front/uchart
-            name: APP-ENV
+            name: app
             namespace: argocd
             project: default
             sources:
