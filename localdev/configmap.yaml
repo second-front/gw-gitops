@@ -121,7 +121,7 @@ neuvector:
 
 sso:
   client_id: il2_eb21db65-3118-4017-bfe7-86829038d3dc_apps
-  client_secret: "123456789"
+  client_secret: "123456789a"
   name: SSO
   url: https://login.gw.local/auth/realms/gamewarden
   # certificateAuthority:
@@ -164,7 +164,7 @@ grafana:
         api_url: "https://login.gw.local/auth/realms/gamewarden/protocol/openid-connect/userinfo"
         auth_url: "https://login.gw.local/auth/realms/gamewarden/protocol/openid-connect/auth"
         client_id: "il2_eb21db65-3118-4017-bfe7-86829038d3dc_apps" #gitleaks:allow
-        client_secret: "123456789"
+        client_secret: "123456789a"
         enabled: true
         groups_attribute_path: "groups"
         name: "Game Warden SSO"
@@ -188,7 +188,7 @@ addons:
     enabled: true
     sso:
       client_id: "il2_eb21db65-3118-4017-bfe7-86829038d3dc_apps" #gitleaks:allow
-      client_secret: "123456789"
+      client_secret: "123456789a"
       enabled: true
     values:
       server:
