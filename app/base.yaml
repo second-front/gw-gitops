@@ -7,3 +7,21 @@ microservices:
   santonio:
     image:
       tag: 1.0
+
+manifests:
+  vs:
+    apiVersion: networking.istio.io/v1
+    kind: VirtualService
+    metadata:
+      name: hackathon
+    spec:
+      gateways:
+      - istio-system/public
+      hosts:
+      - satonio.gw.local
+      http:
+      - route:
+        - destination:
+            host: santonio
+            port:
+              number: 8080
