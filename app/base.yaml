@@ -41,7 +41,7 @@ manifests:
       name: santoniopub
     spec:
       gateways:
-        - istio-system/public-afwerx
+        - istio-system/public
       hosts:
         - "santonio.gamewarden.io"
       http:
