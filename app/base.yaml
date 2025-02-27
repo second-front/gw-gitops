@@ -5,6 +5,8 @@ global:
 
 microservices:
   santonio:
+    securityContext:
+      readOnlyRootFilesystem: false
     image:
       tag: "1.0"
 
