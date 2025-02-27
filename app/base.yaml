@@ -6,8 +6,8 @@ global:
 microservices:
   santonio:
     pullPolicy: Always
-    selectorLabels:
-      protect: keycloak
+    # selectorLabels:
+    #   protect: keycloak
     securityContext:
       readOnlyRootFilesystem: false
       runAsUser: 65532
