@@ -8,8 +8,8 @@ microservices:
     pullPolicy: Always
     securityContext:
       readOnlyRootFilesystem: false
-      runAsUser: 101
-      runAsGroup: 101
+      runAsUser: 0
+      runAsGroup: 0
       allowPrivilegeEscalation: true
       runAsNonRoot: false
     volumeMounts:
