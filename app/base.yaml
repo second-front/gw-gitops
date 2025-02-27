@@ -6,14 +6,14 @@ global:
 microservices:
   santonio:
     pullPolicy: Always
+    selectorLabels:
+      protect: keycloak
     securityContext:
       readOnlyRootFilesystem: false
-      runAsUser: 101
-      runAsGroup: 101
-      allowPrivilegeEscalation: true
-      runAsNonRoot: false
+      runAsUser: 65532
+      runAsGroup: 65532
     image:
-      tag: "1.0"
+      tag: "0.0"
 
 manifests:
   vs:
