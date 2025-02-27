@@ -274,6 +274,8 @@ addons:
               spec:
                 tls: null
     values:
+      serviceAccount:
+        automountServiceAccountToken: false
       replicas: 1
       args:
         - "start-dev"
