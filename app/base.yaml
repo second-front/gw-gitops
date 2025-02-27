@@ -20,6 +20,9 @@ microservices:
       runAsGroup: 101
       allowPrivilegeEscalation: true
       runAsNonRoot: false
+    volumeMounts:
+      - name: nginx-cache
+        mountPath: /var/cache/nginx
     image:
       tag: "1.0"
 
