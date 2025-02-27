@@ -12,8 +12,8 @@ microservices:
       port: 8080
     securityContext:
       readOnlyRootFilesystem: false
-      runAsUser: 65532
-      runAsGroup: 65532
+      runAsUser: 101
+      runAsGroup: 101
 
 manifests:
   vs:
