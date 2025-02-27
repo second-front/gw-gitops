@@ -230,7 +230,7 @@ addons:
                     - $values/app/ENV.yaml
                 path: ./
                 repoURL: https://github.com/second-front/uchart.git
-                targetRevision: 1.0.10
+                targetRevision: 1.0.36
               - ref: values
                 repoURL: https://github.com/second-front/gw-gitops.git
                 targetRevision: main
