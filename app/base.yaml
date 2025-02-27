@@ -23,7 +23,7 @@ manifests:
       gateways:
       - istio-system/public
       hosts:
-      - satonio.gw.local
+      - santonio.gw.local
       http:
       - route:
         - destination:
