@@ -178,12 +178,12 @@ addons:
   authservice:
     enabled: true
     chains:
-      APP:
-        callback_uri: https://APP.gw.local
+      app:
+        callback_uri: https://app.gw.local
         client_id: il2_eb21db65-3118-4017-bfe7-86829038d3dc_apps
         client_secret: "123456789"
         match:
-          prefix: "APP.gw.local"
+          prefix: "app.gw.local"
   argocd:
     enabled: true
     sso:
