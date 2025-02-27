@@ -12,8 +12,6 @@ microservices:
       readOnlyRootFilesystem: false
       runAsUser: 65532
       runAsGroup: 65532
-    image:
-      tag: "1.1"
 
 manifests:
   vs:
